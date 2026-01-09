@@ -107,3 +107,11 @@ frontend/node_modules/.cache/default-development/11.pack
 # Environment files
 *.env
 *.env.*
+# ===== ANDROID / GRADLE =====
+android/.gradle/
+android/app/build/
+android/build/
+.gradle/
+*.gradle
+*.lock
+
