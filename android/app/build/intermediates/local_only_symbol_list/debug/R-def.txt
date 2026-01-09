@@ -1,0 +1,14 @@
+R_DEF: Internal format may change without notice
+local
+id widget_balance
+id widget_title
+layout widget_quick_expense
+layout widget_wallet_balance
+string app_name
+string track_analyze_save
+string welcome
+style Theme.SmartExpense
+xml backup_rules
+xml data_extraction_rules
+xml quick_expense_widget_info
+xml wallet_balance_widget_info

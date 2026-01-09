@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.smartexpense.app-merged_res-79:/layout_widget_quick_expense.xml.flat",
+        "source": "com.smartexpense.app-main-81:/layout/widget_quick_expense.xml"
+    },
+    {
+        "merged": "com.smartexpense.app-merged_res-79:/layout_widget_wallet_balance.xml.flat",
+        "source": "com.smartexpense.app-main-81:/layout/widget_wallet_balance.xml"
+    },
+    {
+        "merged": "com.smartexpense.app-merged_res-79:/xml_data_extraction_rules.xml.flat",
+        "source": "com.smartexpense.app-main-81:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.smartexpense.app-merged_res-79:/xml_backup_rules.xml.flat",
+        "source": "com.smartexpense.app-main-81:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.smartexpense.app-merged_res-79:/xml_wallet_balance_widget_info.xml.flat",
+        "source": "com.smartexpense.app-main-81:/xml/wallet_balance_widget_info.xml"
+    },
+    {
+        "merged": "com.smartexpense.app-merged_res-79:/xml_quick_expense_widget_info.xml.flat",
+        "source": "com.smartexpense.app-main-81:/xml/quick_expense_widget_info.xml"
+    }
+]

@@ -1,0 +1,37 @@
+apply plugin: "com.android.application"
+apply plugin: "com.facebook.react"
+
+react {
+}
+
+android {
+    ndkVersion rootProject.ext.ndkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    namespace "com.smartexpense"
+    defaultConfig {
+        applicationId "com.smartexpense"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    implementation("com.facebook.react:react-android")
+
+    if (hermesEnabled.toBoolean()) {
+        implementation("com.facebook.react:hermes-android")
+    } else {
+        implementation jscFlavor
+    }
+}
+
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

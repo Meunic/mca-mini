@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SmartExpense</string>
+    <string name="welcome">Welcome to SmartExpense</string>
+    <string name="track_analyze_save">Track. Analyze. Save.</string>
+</resources>

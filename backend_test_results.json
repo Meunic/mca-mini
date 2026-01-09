@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "total_tests": 21,
+    "passed_tests": 21,
+    "success_rate": 100.0
+  },
+  "test_results": [
+    {
+      "test": "User Registration",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Wallet Balance",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Categories",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Create Category",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Create Expense",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Create Income",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Transactions",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Update Transaction",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Create Budget",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get Budgets",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Analytics Overview",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Analytics Monthly",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "AI Categorize",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "AI Budget Suggestions",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Invalid Token Handling",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "No Token Handling",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Delete Transaction 451e3811",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Delete Transaction 5068ffef",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Delete Budget 5be8c6f5",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Delete Category f210bd26",
+      "success": true,
+      "details": ""
+    }
+  ],
+  "timestamp": "2025-11-25T21:42:54.695578"
+}

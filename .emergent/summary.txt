@@ -1,0 +1,517 @@
+<analysis>**original_problem_statement**: The user wants to build a full-stack personal expense tracker application called SmartExpense.
+
+**PRODUCT REQUIREMENTS:**
+1.  **Initial Frontend Build**: Create a production-ready static frontend (HTML/CSS/JS or React) for SmartExpense, integrating with a backend at a given API base.
+    *   **Pages**:  (Login/Register) and  (Dashboard).
+    *   **Dashboard Features**: Overview cards, expense list, Add Expense modal, category management, budget management, filters, and charts.
+    *   **Core JS**: Central API config, a  wrapper for API calls with JWT auth, and  guards.
+    *   **Design**: Modern, clean UI with a specific color scheme (purple/violet/pink gradient).
+    *   **AI Placeholders**: Add hooks and UI placeholders for future AI features.
+2.  **Wallet & INR Upgrade**:
+    *   **Currency**: Change all currency displays to Indian Rupees (₹) with  locale formatting.
+    *   **Wallet Feature**: Implement a Wallet Balance concept, separate from budgets.
+    *   **Features**: Add Money modal/flow to credit the wallet, and expense creation should debit the wallet.
+    *   **Overdraft**: Allow wallet balance to go negative, with a visual indicator.
+    - **Payment Methods**: Standardize to Cash, UPI, Debit Card, Credit Card.
+    * **Password Toggle**: Add a show/hide password button on the auth forms.
+3.  **AI Feature Implementation**:
+    *   Implement several AI features using a model like OpenAI's GPT-4o-mini.
+    *   **Backend**: Create new  endpoints for: auto-categorization, expense suggestions, budget suggestions, natural language search, insights/summaries, and forecasting. Implement rule-based fallbacks if the AI service is unavailable.
+    *   **Frontend**: Integrate these AI features into the UI (e.g., AI Suggest button in the Add Expense modal, a natural language search bar on the dashboard).
+4.  **Edit Wallet Balance**:
+    *   The user requested a feature to manually edit their wallet balance, either by setting a new absolute value or by adjusting it up or down.
+
+**User's preferred language**: The user communicates in English. The next agent MUST respond in English only.
+
+**what currently exists?**
+A complete full-stack application (React frontend, FastAPI backend, MongoDB database) has been developed. The application includes:
+- **Authentication**: JWT-based user registration and login.
+- **Core Features**: Full CRUD for transactions (expenses/income), categories, and budgets.
+- **Dashboard**: A comprehensive dashboard displaying a wallet balance, overview cards (income, spending), a transaction list, and analytics charts.
+- **Wallet System**: The app uses INR (₹) currency, supports adding money to a wallet, and debits the wallet when expenses are added. It allows for a negative balance (overdraft).
+- **AI Integration**: A full suite of AI features has been implemented, including auto-categorization, expense suggestions, natural language search, budget suggestions, insights, and forecasting. These features use a local AI service () that calls the OpenAI API but also has rule-based fallbacks, allowing the app to function without an API key.
+- **Local Setup Support**: The user is running the app on their local macOS machine. The agent has provided extensive step-by-step instructions and debugging help for this local environment, including replacing platform-specific libraries and creating necessary  files.
+
+**Last working item**:
+- **Last item agent was working**: Fixing the Edit Wallet Balance feature. The user reported a Failed to update wallet balance error, which was diagnosed as a  for the backend endpoint . The agent implemented a workaround by modifying the frontend  to use the existing, functional  endpoint for both set and adjust operations, instead of fixing the new backend endpoint.
+- **Status**: USER VERIFICATION PENDING
+- **Agent Testing Done**: N
+- **Which testing method agent to use?**: Manual testing by user. The agent should first ask the user to test the latest fix. If the issue persists, the agent should check the browser console for errors using the  and review the backend logs (==> /var/log/supervisor/backend.err.log <==
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-11-25 21:17:41,595 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/root/.venv/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+WARNING:  WatchFiles detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [395]
+INFO:     Started server process [1373]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1373]
+INFO:     Stopping reloader process [393]
+INFO:     Will watch for changes in these directories: ['/app/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [2299] using WatchFiles
+INFO:     Started server process [2301]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2025-11-25 21:42:53,289 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/root/.venv/lib/python3.11/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+WARNING:  WatchFiles detected changes in 'ai_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2301]
+INFO:     Started server process [3644]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3644]
+INFO:     Started server process [3666]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3666]
+INFO:     Stopping reloader process [2299]
+INFO:     Will watch for changes in these directories: ['/app/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [3678] using WatchFiles
+INFO:     Started server process [3680]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3680]
+INFO:     Stopping reloader process [3678]
+INFO:     Will watch for changes in these directories: ['/app/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [4105] using WatchFiles
+INFO:     Started server process [4107]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4107]
+INFO:     Started server process [4428]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[92m22:14:42 - LiteLLM:INFO[0m: utils.py:3427 - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-11-25 22:14:42,915 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+[92m22:14:44 - LiteLLM:INFO[0m: utils.py:1307 - Wrapper: Completed Call, calling success_handler
+2025-11-25 22:14:44,770 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+INFO:     Will watch for changes in these directories: ['/app/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [29] using WatchFiles
+INFO:     Started server process [66]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Will watch for changes in these directories: ['/app/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [29] using WatchFiles
+INFO:     Started server process [66]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Will watch for changes in these directories: ['/app/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [29] using WatchFiles
+
+==> /var/log/supervisor/backend.out.log <==
+INFO:     10.64.128.198:60638 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.141.18:33400 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.141.19:44482 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.141.18:33410 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.128.201:47728 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.128.198:55098 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     10.64.128.201:51578 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.141.19:40000 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.141.19:39992 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.141.18:52548 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.141.18:52564 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.141.18:52564 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.141.15:56364 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.128.201:51578 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.128.201:51578 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.141.15:56364 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60222 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34550 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60222 - "OPTIONS /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.130.198:55838 - "OPTIONS /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60222 - "OPTIONS /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34550 - "OPTIONS /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60230 - "OPTIONS /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34550 - "OPTIONS /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.130.198:55838 - "OPTIONS /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60230 - "OPTIONS /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.130.198:55842 - "OPTIONS /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60232 - "OPTIONS /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60246 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34560 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34568 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60232 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.130.198:55842 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.130.198:55844 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34568 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.129.142:60222 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.130.198:55838 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.129.173:34560 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32918 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39100 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32928 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39098 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39114 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39098 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32928 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39098 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39100 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.140.142:39100 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32946 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32942 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32956 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.140.142:37886 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.140.142:37886 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32942 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.140.142:37886 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.140.79:32942 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.140.142:37886 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.140.142:37886 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.129.173:60520 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.129.173:60526 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.129.142:56036 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.130.198:43748 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.130.198:43762 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.130.198:43762 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.129.173:60526 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.129.173:60526 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.129.173:60520 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.130.198:43762 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.140.79:57316 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.137.9:33690 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.137.9:33694 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.142:46602 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.140.142:46610 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.137.9:33694 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.137.9:33690 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.137.9:33698 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.137.16:46678 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.137.16:46678 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.130.198:36358 - "POST /api/ai/suggest-budget HTTP/1.1" 200 OK
+INFO:     10.64.137.9:45332 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.137.16:53712 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.137.9:45318 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.137.9:45318 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.140.79:45164 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.137.16:53712 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.140.142:56228 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.140.79:45164 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.142:56228 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.140.79:45164 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.141.19:45418 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.141.19:45426 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.141.15:33802 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.141.15:33790 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.141.15:33790 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.141.18:35254 - "GET /api/budgets HTTP/1.1" 200 OK
+INFO:     10.64.141.18:35270 - "GET /api/wallet HTTP/1.1" 200 OK
+INFO:     10.64.141.18:35274 - "GET /api/analytics/overview HTTP/1.1" 200 OK
+INFO:     10.64.141.19:45426 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     10.64.141.15:33790 - "GET /api/transactions HTTP/1.1" 200 OK
+INFO:     10.64.141.19:46024 - "POST /api/ai/forecast HTTP/1.1" 200 OK) to debug further.
+- **User Testing Done**: N
+
+**All Pending/In progress Issue list**:
+-   **Issue 1: Edit Wallet Balance feature may still be broken or suboptimal. (P0)**
+-   **Issue 2: User's local environment is fragile. (P1)**
+
+**Issues Detail**:
+-   **Issue 1:** Edit Wallet Balance feature may still be broken or suboptimal.
+    -   **Attempted fixes**: The agent initially tried to add a new  endpoint to the backend, but this failed (resulted in a 404 error), likely due to an incorrect file modification or the service not being reloaded. The agent then implemented a workaround on the frontend () to calculate the difference between the desired balance and the current balance and use the existing  endpoint.
+    -   **Next debug checklist**:
+        1.  Ask the user to confirm if the latest fix (the frontend workaround) works for them.
+        2.  If it fails, check the browser console and network tab via  for error details.
+        3.  Check the backend logs for errors during the API call.
+        4.  **Recommended Fix**: Instead of the workaround, properly fix the backend.
+            *   View  to confirm if the  endpoint code is present and correct.
+            *   If missing or incorrect, add/fix it.
+            *   Restart the backend service backend: stopped
+backend: started.
+            *   Revert the frontend workaround in  to use the simpler, direct call to .
+    -   **Why fix this issue and what will be achieved with the fix?**: A core user-requested feature will be made functional and robust. Fixing the backend is a cleaner solution than the current frontend workaround.
+    -   **Status**: USER VERIFICATION PENDING
+    -   **Is recurring issue?** Y
+    -   **Should Test frontend/backend/both after fix?** Both.
+    -   **Blocked on other issue**: None.
+
+-   **Issue 2:** User's local environment is fragile.
+    -   **Attempted fixes**: The agent provided numerous step-by-step guides for macOS, including using  instead of , creating  files, and troubleshooting  by replacing it with a local AI service.
+    -   **Next debug checklist**:
+        1.  Be prepared for more local setup questions from the user.
+        2.  When providing commands, always specify they are for macOS and the VS Code integrated terminal.
+        3.  Proactively offer to create startup scripts () to simplify the launch process for the user.
+    -   **Why fix this issue and what will be achieved with the fix?**: The user will be ableto reliably run and test the application, which is necessary for development to continue.
+    -   **Status**: IN PROGRESS
+    -   **Is recurring issue?** Y
+    -   **Should Test frontend/backend/both after fix?** N/A (Environment issue)
+    -   **Blocked on other issue**: None.
+
+**In progress Task List**:
+None.
+
+**Upcoming and Future Tasks**
+- **Upcoming Tasks**:
+    - **P0**: Verify and fix the Edit Wallet Balance feature.
+    - **P1**: Create a comprehensive  for the frontend root, documenting local setup, API usage, and new features as originally requested.
+    - **P2**: Create a  folder with minified/production-ready builds of the frontend assets.
+- **Future Tasks**:
+    - As suggested in the technical documentation, future enhancements could include password reset, email notifications, receipt OCR, bank integration, and more.
+
+**Completed work in this session**
+- **Initial Application Build**: Created a full-stack React/FastAPI/MongoDB application with JWT authentication and CRUD for expenses, categories, and budgets.
+- **Wallet & INR Upgrade**: Integrated wallet balance, INR currency formatting, Add Money flow, and a password visibility toggle.
+- **AI Feature Implementation**:
+    - **Backend**: Added  endpoints with OpenAI integration and rule-based fallbacks.
+    - **Frontend**: Integrated AI features into the UI, including an AI Suggest button, natural language search, and panels for insights and forecasting.
+- **Local Development Support**:
+    - Replaced  with a standard usage: openai [-h] [-v] [-b API_BASE] [-k API_KEY] [-p PROXY [PROXY ...]]
+              [-o ORGANIZATION] [-t {openai,azure}]
+              [--api-version API_VERSION] [--azure-endpoint AZURE_ENDPOINT]
+              [--azure-ad-token AZURE_AD_TOKEN] [-V]
+              {api,tools,migrate,grit} ...
+
+positional arguments:
+  {api,tools,migrate,grit}
+    api                 Direct API calls
+    tools               Client side tools for convenience
+
+options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Set verbosity.
+  -b API_BASE, --api-base API_BASE
+                        What API base url to use.
+  -k API_KEY, --api-key API_KEY
+                        What API key to use.
+  -p PROXY [PROXY ...], --proxy PROXY [PROXY ...]
+                        What proxy to use.
+  -o ORGANIZATION, --organization ORGANIZATION
+                        Which organization to run as (will use your default
+                        organization if not specified)
+  -t {openai,azure}, --api-type {openai,azure}
+                        The backend API to call, must be `openai` or `azure`
+  --api-version API_VERSION
+                        The Azure API version, e.g.
+                        'https://learn.microsoft.com/en-us/azure/ai-
+                        services/openai/reference#rest-api-versioning'
+  --azure-endpoint AZURE_ENDPOINT
+                        The Azure endpoint, e.g.
+                        'https://endpoint.openai.azure.com'
+  --azure-ad-token AZURE_AD_TOKEN
+                        A token from Azure Active Directory,
+                        https://www.microsoft.com/en-
+                        us/security/business/identity-access/microsoft-entra-
+                        id
+  -V, --version         show program's version number and exit implementation () to enable local execution.
+    - Provided extensive step-by-step guidance and debugging for the user's macOS environment.
+- **Edit Wallet Feature**: Added the UI () and backend logic (though with issues) for manually editing the wallet balance.
+- **Documentation**: Created , , and two detailed PDF-ready markdown files ( and ) explaining the project's technology.
+
+**Earlier issues found/mentioned but not fixed**
+-   **Issue 1:** The root cause of the  endpoint returning a 404 was bypassed, not fixed.
+    -   **Debug checklist**:
+        1.  View  to check for the presence and correctness of the  function.
+        2.  Ensure the function was added correctly and not inside another function's scope.
+        3.  The agent who added the endpoint might have forgotten to restart the backend server after the change.
+    -   **Why to solve this issue and what will be achieved with this?**: This will make the code cleaner and more direct. The frontend logic can be simplified by removing the workaround that calculates the difference to use the  endpoint.
+    -   **Should Test frontend/backend/both after fix**: Backend.
+    -   **Is recurring issue?** N
+
+**Known issue recurrence from previous fork**
+- N/A
+
+**Code Architecture**
+
+
+**Key Technical Concepts**
+- **Frontend**: React, React Router, Axios, Tailwind CSS, Shadcn UI, Recharts
+- **Backend**: FastAPI, Python, Uvicorn
+- **Database**: MongoDB with Motor (async driver)
+- **Authentication**: JWT (JSON Web Tokens) with bcrypt for password hashing
+- **AI**: OpenAI (GPT-4o-mini) integration for NLP tasks, with a rule-based fallback system.
+- **Architecture**: Full-stack, RESTful API, Single Page Application (SPA).
+
+**key DB schema**
+-   **users**: 
+-   **transactions**: 
+-   **categories**: 
+-   **budgets**: 
+
+**changes in tech stack**
+-   The platform-specific  library was replaced with the standard usage: openai [-h] [-v] [-b API_BASE] [-k API_KEY] [-p PROXY [PROXY ...]]
+              [-o ORGANIZATION] [-t {openai,azure}]
+              [--api-version API_VERSION] [--azure-endpoint AZURE_ENDPOINT]
+              [--azure-ad-token AZURE_AD_TOKEN] [-V]
+              {api,tools,migrate,grit} ...
+
+positional arguments:
+  {api,tools,migrate,grit}
+    api                 Direct API calls
+    tools               Client side tools for convenience
+
+options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Set verbosity.
+  -b API_BASE, --api-base API_BASE
+                        What API base url to use.
+  -k API_KEY, --api-key API_KEY
+                        What API key to use.
+  -p PROXY [PROXY ...], --proxy PROXY [PROXY ...]
+                        What proxy to use.
+  -o ORGANIZATION, --organization ORGANIZATION
+                        Which organization to run as (will use your default
+                        organization if not specified)
+  -t {openai,azure}, --api-type {openai,azure}
+                        The backend API to call, must be `openai` or `azure`
+  --api-version API_VERSION
+                        The Azure API version, e.g.
+                        'https://learn.microsoft.com/en-us/azure/ai-
+                        services/openai/reference#rest-api-versioning'
+  --azure-endpoint AZURE_ENDPOINT
+                        The Azure endpoint, e.g.
+                        'https://endpoint.openai.azure.com'
+  --azure-ad-token AZURE_AD_TOKEN
+                        A token from Azure Active Directory,
+                        https://www.microsoft.com/en-
+                        us/security/business/identity-access/microsoft-entra-
+                        id
+  -V, --version         show program's version number and exit library via a new  file to support the user's local development environment.
+
+**All files**
+- : Contains all FastAPI API endpoints for auth, transactions, wallet, AI, etc.
+- : A new file created to handle AI logic using the standard usage: openai [-h] [-v] [-b API_BASE] [-k API_KEY] [-p PROXY [PROXY ...]]
+              [-o ORGANIZATION] [-t {openai,azure}]
+              [--api-version API_VERSION] [--azure-endpoint AZURE_ENDPOINT]
+              [--azure-ad-token AZURE_AD_TOKEN] [-V]
+              {api,tools,migrate,grit} ...
+
+positional arguments:
+  {api,tools,migrate,grit}
+    api                 Direct API calls
+    tools               Client side tools for convenience
+
+options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Set verbosity.
+  -b API_BASE, --api-base API_BASE
+                        What API base url to use.
+  -k API_KEY, --api-key API_KEY
+                        What API key to use.
+  -p PROXY [PROXY ...], --proxy PROXY [PROXY ...]
+                        What proxy to use.
+  -o ORGANIZATION, --organization ORGANIZATION
+                        Which organization to run as (will use your default
+                        organization if not specified)
+  -t {openai,azure}, --api-type {openai,azure}
+                        The backend API to call, must be `openai` or `azure`
+  --api-version API_VERSION
+                        The Azure API version, e.g.
+                        'https://learn.microsoft.com/en-us/azure/ai-
+                        services/openai/reference#rest-api-versioning'
+  --azure-endpoint AZURE_ENDPOINT
+                        The Azure endpoint, e.g.
+                        'https://endpoint.openai.azure.com'
+  --azure-ad-token AZURE_AD_TOKEN
+                        A token from Azure Active Directory,
+                        https://www.microsoft.com/en-
+                        us/security/business/identity-access/microsoft-entra-
+                        id
+  -V, --version         show program's version number and exit library for local development.
+- : The main component for the application dashboard, orchestrating all other components. It was heavily modified to add wallet and AI features.
+- : New component for the user-requested Edit Wallet feature.
+- : Handles user login and registration.
+- : Utility for formatting numbers as Indian Rupees (₹).
+- : Folder containing the two comprehensive documentation files generated for the user.
+
+**Areas that need refactoring**
+-   The  function in  contains a workaround. If the backend  endpoint is fixed, this function should be simplified to call it directly instead of calculating the difference and calling .
+
+**key api endpoints**
+-   , 
+-    (GET, POST, PUT, DELETE)
+-    (GET),  (POST)
+-   , , , , , 
+
+**Critical Info for New Agent**
+-   The user is working on their **local macOS machine**, not the Emergent platform. This is the source of most recent issues.
+-   Provide **macOS-specific commands** (, no , Current Mongosh Log ID:	6928876bd16bb0ba60b1ddf3
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.9
+Using MongoDB:		7.0.26
+Using Mongosh:		2.5.9
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2025-11-27T17:16:15.630+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-11-27T17:16:18.124+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2025-11-27T17:16:18.126+00:00: You are running this process as the root user, which is not recommended
+   2025-11-27T17:16:18.126+00:00: Soft rlimits for open file descriptors too low
+------
+
+test>  instead of ).
+-   The project uses  which requires an  in . If not provided (), AI features will use rule-based fallbacks.
+-   The Edit Wallet Balance feature was reported as broken. The last fix was a **frontend-only workaround**. The root cause (backend endpoint 404) was not resolved. You should prioritize verifying this feature with the user.
+-   The user prefers explicit, step-by-step terminal commands and may need help creating or editing files without using .
+
+**documents created in this job**
+- 
+- 
+- 
+- 
+
+**Last 5 User Messages and any pending user messages**
+-   : User shows that the  file is missing. (Resolved)
+-   : User reports a critical bug after setting up the environment. (Resolved by creating  file)
+-   : User requests a new feature. (Implemented, but with bugs)
+-   : User reports the new feature is not working. (Partially addressed with a workaround)
+-   : User provides the specific error for the failing feature. (Workaround provided)
+-   : User requests comprehensive documentation. (Completed)
+-   **Pending**: The user has not confirmed if the Edit Wallet feature works after the last fix.
+
+**Project Health Check:**
+-   **Broken**: The Edit Wallet Balance feature is potentially broken. The backend endpoint for setting the balance () is not working.
+-   **Mocked**: AI features will run in a mocked/fallback mode if a real  is not provided in the user's local  file.
+
+**Testing status**
+-   **Testing agent used after significant changes**: YES (early in the development)
+-   **Troubleshoot agent used after agent stuck in loop**: NO
+-   **Test files created**: None
+-   **Known regressions**: None
+
+**Credentials to test flow:**
+-   Register a new user through the UI.
+-   For full AI functionality, an  needs to be set in . Otherwise, it uses  and falls back to rule-based logic.</analysis>
